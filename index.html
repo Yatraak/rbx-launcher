@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Launching...</title>
+</head>
+<body style="background:#111;">
+  <script>
+    // Grab placeId or private server code from query string
+    const params = new URLSearchParams(window.location.search);
+    const placeId = params.get('placeId');
+    const linkCode = params.get('linkCode');
+
+    let uri = `roblox://placeId=${placeId}`;
+    if (linkCode) {
+      uri += `&linkCode=${linkCode}`;
+    }
+
+    // Fire protocol directly into the OS handler
+    window.location.href = uri;
+
+    // Immediately close tab after firing
+    setTimeout(() => {
+      window.close();
+    }, 500);
+  </script>
+</body>
+</html>
